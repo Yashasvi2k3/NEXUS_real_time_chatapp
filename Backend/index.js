@@ -20,7 +20,11 @@ app.use(cookieParser())
 
 // CORS configuration
 app.use(cors({
-    origin: ['https://slrtech-chatapp.onrender.com', 'http://localhost:5173', 'http://localhost:3000'],
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        process.env.FRONTEND_ORIGIN
+    ].filter(Boolean),
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
