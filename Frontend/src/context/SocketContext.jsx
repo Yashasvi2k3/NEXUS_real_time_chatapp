@@ -14,7 +14,7 @@ export const SocketContextProvider=({children})=>{
     const {authUser} = useAuth();
     useEffect(()=>{
         if(authUser){
-            const socket = io(import.meta.env.VITE_SOCKET_URL || "http://localhost:3000",{
+            const socket = io(import.meta.env.VITE_SOCKET_URL || "https://nexus-zyou.onrender.com",{
                 query:{
                     userId:authUser?._id,
                 }
