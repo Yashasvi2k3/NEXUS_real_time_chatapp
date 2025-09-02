@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Sidebar from './components/SideBar';
-import MessageContainer from './components/messagesContainer';
+import Sidebar from './components/Sidebar';
+import MessageContainer from './components/MessagesContainer';
 
 const Home = () => {
 
