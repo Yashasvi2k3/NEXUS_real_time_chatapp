@@ -8,13 +8,7 @@ const dbConnect = async () => {
 
     await mongoose.connect(process.env.MONGODB_CONNECT, {
       serverSelectionTimeoutMS: 30000,
-      socketTimeoutMS: 45000,
-      ssl: true,
-      sslValidate: false,
-      tlsAllowInvalidCertificates: true,
-      tlsAllowInvalidHostnames: true,
-      retryWrites: true,
-      w: 'majority'
+      socketTimeoutMS: 45000
     });
     console.log("Database connected successfully");
   } catch (error) {
