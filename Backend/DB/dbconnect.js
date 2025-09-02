@@ -9,14 +9,28 @@ const dbConnect = async () => {
     // Parse the connection string to add required parameters
     let connectionString = process.env.MONGODB_CONNECT;
     
-    // Add connection parameters to handle SSL/TLS issues
-    if (!connectionString.includes('?')) {
-      connectionString += '?';
-    } else {
-      connectionString += '&';
+    // Add connection parameters only if they don't already exist
+    const params = new URLSearchParams();
+    
+    if (!connectionString.includes('retryWrites')) {
+      params.append('retryWrites', 'true');
+    }
+    if (!connectionString.includes('w=')) {
+      params.append('w', 'majority');
+    }
+    if (!connectionString.includes('directConnection')) {
+      params.append('directConnection', 'true');
     }
     
-    connectionString += 'directConnection=true&retryWrites=true&w=majority';
+    // Add parameters to connection string
+    if (params.toString()) {
+      if (!connectionString.includes('?')) {
+        connectionString += '?';
+      } else {
+        connectionString += '&';
+      }
+      connectionString += params.toString();
+    }
 
     await mongoose.connect(connectionString, {
       serverSelectionTimeoutMS: 30000,
