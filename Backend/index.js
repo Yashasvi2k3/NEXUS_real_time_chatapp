@@ -21,8 +21,7 @@ app.use(cookieParser())
 // CORS configuration
 app.use(cors({
     origin: [
-        'http://localhost:5173',
-        'http://localhost:3000',
+        'https://nexus-zyou.onrender.com',
         process.env.FRONTEND_ORIGIN
     ].filter(Boolean),
     credentials: true,
