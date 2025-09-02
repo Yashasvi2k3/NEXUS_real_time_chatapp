@@ -18,9 +18,6 @@ const dbConnect = async () => {
     if (!connectionString.includes('w=')) {
       params.append('w', 'majority');
     }
-    if (!connectionString.includes('directConnection')) {
-      params.append('directConnection', 'true');
-    }
     
     // Add parameters to connection string
     if (params.toString()) {
