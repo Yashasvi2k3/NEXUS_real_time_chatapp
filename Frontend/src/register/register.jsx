@@ -55,7 +55,7 @@ console.log(inputData);
           bg-gray-400 bg-clip-padding
            backderop-filter backdrop-blur-lg bg-opacity-0'>
   <h1 className='text-3xl font-bold text-center text-gray-300'>Register
-                    <span className='text-gray-950'> Chatters </span>
+                    <span className='text-gray-950'></span>
                     </h1>
                     <form onSubmit={handelSubmit} className='flex flex-col text-black'>
                     <div>
