@@ -7,7 +7,11 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin:['https://slrtech-chatapp.onrender.com', 'http://localhost:5173', 'http://localhost:3000'],
+        origin:[
+            'http://localhost:5173',
+            'http://localhost:3000',
+            process.env.FRONTEND_ORIGIN
+        ].filter(Boolean),
         methods:["GET","POST"],
         credentials: true
     }
