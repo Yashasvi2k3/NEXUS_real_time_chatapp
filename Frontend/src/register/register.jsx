@@ -151,7 +151,7 @@ console.log(inputData);
                     <div className='pt-2'>
                         <p className='text-sm font-semibold
                          text-gray-800'>
-                            Dont have an Acount ? <Link to={'/login'}>
+                            Already have an Acount ? <Link to={'/login'}>
                                 <span
                                     className='text-gray-950 
                             font-bold underline cursor-pointer
