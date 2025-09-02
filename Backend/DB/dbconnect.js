@@ -6,10 +6,25 @@ const dbConnect = async () => {
       throw new Error("MONGODB_CONNECT env var is missing");
     }
 
-    await mongoose.connect(process.env.MONGODB_CONNECT, {
+    // Parse the connection string to add required parameters
+    let connectionString = process.env.MONGODB_CONNECT;
+    
+    // Add connection parameters to handle SSL/TLS issues
+    if (!connectionString.includes('?')) {
+      connectionString += '?';
+    } else {
+      connectionString += '&';
+    }
+    
+    connectionString += 'directConnection=true&retryWrites=true&w=majority';
+
+    await mongoose.connect(connectionString, {
       serverSelectionTimeoutMS: 30000,
-      socketTimeoutMS: 45000
+      socketTimeoutMS: 45000,
+      bufferCommands: false,
+      bufferMaxEntries: 0
     });
+    
     console.log("Database connected successfully");
   } catch (error) {
     console.error("Database connection error:", error.message);
