@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon Backend/index.js",
     "start": "node Backend/index.js",
-    "build": "npm install && npm --prefix Frontend install && npm --prefix Frontend run build"
+    "build": "if [ -f Frontend/package.json ]; then npm ci && npm --prefix Frontend ci && npm --prefix Frontend run build; else npm ci && npm run build; fi"
   },
   "keywords": [],
   "author": "",
