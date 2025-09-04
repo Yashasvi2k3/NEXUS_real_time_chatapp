@@ -7,14 +7,14 @@ const SocketContext = createContext();
 export const useSocketContext=()=>{
     return useContext(SocketContext);
 }
-
+// "https://nexus-zyou.onrender.com"
 export const SocketContextProvider=({children})=>{
     const [socket , setSocket]= useState(null);
     const [onlineUser,setOnlineUser]=useState([]);
     const {authUser} = useAuth();
     useEffect(()=>{
         if(authUser){
-            const socket = io(import.meta.env.VITE_SOCKET_URL || "https://nexus-zyou.onrender.com",{
+            const socket = io(import.meta.env.VITE_SOCKET_URL || "https://localhost:3000/",  {
                 query:{
                     userId:authUser?._id,
                 }
