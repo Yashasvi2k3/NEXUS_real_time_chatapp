@@ -3,12 +3,13 @@ import http from 'http';
 import express from 'express';
 
 const app = express();
+// 'https://nexus-zyou.onrender.com'
 
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
         origin:[
-            'https://nexus-zyou.onrender.com',
+            , 'http://localhost:5173', 'http;localhost:3000', 
             process.env.FRONTEND_ORIGIN
         ].filter(Boolean),
         methods:["GET","POST"],
